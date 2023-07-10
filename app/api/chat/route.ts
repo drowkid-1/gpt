@@ -57,6 +57,7 @@ export async function POST(req: Request) {
   if (initialResponseMessage.function_call) {
     const { name, arguments: args } = initialResponseMessage.function_call;
     const functionResponse = await runFunction(name, JSON.parse(args));
+                          
 
     finalResponse = await openai.createChatCompletion({
       model: "gpt-3.5-turbo-0613",
